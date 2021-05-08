@@ -1,10 +1,11 @@
-#Simple app
+#01 - Simple app
 
 To create a new application, follow these steps:
 
-1. Type ```yarn init```
+1. Type `yarn init`
 2. Enter fields values (name, description etc.).
-3. Add ```type``` field in ```package.json```: 
+3. Add `type` field in `package.json`:
+
 ```json
 {
   "name": "restaurant-manager-js",
@@ -17,8 +18,10 @@ To create a new application, follow these steps:
   "type": "module"
 }
 ```
-4. Install packages: ```yarn add cross-env config jest```
+
+4. Install packages: `yarn add cross-env config jest`
 5. Add scripts to run your app by yarn/npm [package.json]:
+
 ```json
 {
   "name": "restaurant-manager-js",
@@ -40,13 +43,16 @@ To create a new application, follow these steps:
   }
 }
 ```
-6. Create a index.js file in src directory. 
-- ```mkdir src``` 
-- ```touch src/index.js``` 
+
+6. Create a index.js file in src directory.
+
+- `mkdir src`
+- `touch src/index.js`
 
 7. Add _console.log_ into index.js file:
+
 ```js
 console.log("test");
 ```
 
-8. Run app: ```yarn dev```. Now nodemon will watch all changes inside src folder and then it will rerun the application when changes will occur.
+8. Run app: `yarn dev`. Now nodemon will watch all changes inside src folder and then it will rerun the application when changes will occur.
