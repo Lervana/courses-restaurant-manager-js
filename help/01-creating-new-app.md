@@ -1,4 +1,4 @@
-#01 - Simple app
+# 01 - Simple app
 
 To create a new application, follow these steps:
 

@@ -1,14 +1,14 @@
-#02 - Utilities
+# 02 - Utilities
 
-To keep application clean and readable please use below tools:
+To keep the application clean and readable please use below tools:
 
-###NPX
+### NPX
 
 Add _npx_ [https://www.npmjs.com/package/npx]: `npm install -g npx`.
 
-###ESlint
+### ESlint
 
-ESlint is very useful tool - it requires that certain rules are met in the code [https://www.npmjs.com/package/eslint].
+ESlint is a very useful tool - it requires that certain rules are met in the code [https://www.npmjs.com/package/eslint].
 
 - Install eslint: `yarn add eslint -D`
 - Type: `npx eslint --init`, pick options:
@@ -39,12 +39,12 @@ ESlint is very useful tool - it requires that certain rules are met in the code 
   }
   ```
 
-###Prettier
+### Prettier
 
 To keep code clean please use _Prettier_ [https://www.npmjs.com/package/prettier]:
 
 - Install prettier: `yarn add prettier -D`.
-- Create `.prettierrc` file containing prettier setup:
+- Create `.prettierrc` file containing _Prettier_ setup:
 
   ```json
   {
@@ -77,7 +77,8 @@ Prettier need to be connected with ESlint. In that case you need to add eslint-c
 ```
 
 ### Husky and lint-staged
-Husky is helped with making *Prettier* reformatting code before each commit. It improves code quality even if the developer has no *Prettier* connected to IDE! *Lint-staged* allows running linters against staged git files. Combined prevent committing not wanted mistakes.
+
+Husky is helped with making _Prettier_ reformatting code before each commit. It improves code quality even if the developer has no _Prettier_ connected to IDE! _Lint-staged_ allows running linters against staged git files. Combined prevent committing not wanted mistakes.
 
 - Install husky by typing `yarn add husky lint-staged -D`.
 - Then run configuration commands
@@ -91,14 +92,15 @@ Husky is helped with making *Prettier* reformatting code before each commit. It 
   ```json
   {
     "lint-staged": {
-      "src/**/*": ["eslint --fix","prettier --write --ignore-unknown"]
+      "src/**/*": ["eslint --fix", "prettier --write --ignore-unknown"]
     }
   }
   ```
 
 **WARNING**
 
-When *husky* is not working because it cannot for example find npx please add file `~/.huskyrc` containing this content:
+When _husky_ is not working because it cannot - for example - find npx please add file `~/.huskyrc` containing this content:
+
 ```shell
 # ~/.huskyrc
 export NVM_DIR="$HOME/.nvm"

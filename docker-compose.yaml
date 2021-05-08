@@ -1,0 +1,10 @@
+mysql:
+  image: mysql
+  restart: always
+  environment:
+    MYSQL_DATABASE: exampledb
+    MYSQL_USER: exampleuser
+    MYSQL_PASSWORD: examplepass
+    MYSQL_RANDOM_ROOT_PASSWORD: '1'
+  ports:
+    - 3307:3306

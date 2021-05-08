@@ -1,4 +1,4 @@
-#00 - Prerequisites
+# 00 - Prerequisites
 List of prerequisites:
 
 - Node.js 14.16.1 [https://nodejs.org/en/download/]
