@@ -16,16 +16,24 @@
   "dependencies": {
     "config": "^3.3.6",
     "cross-env": "^7.0.3",
-    "jest": "^26.6.3"
+    "dotenv": "^9.0.0",
+    "jest": "^26.6.3",
+    "lodash": "^4.17.21",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
   },
   "devDependencies": {
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "sequelize-cli": "^6.2.0"
   },
   "lint-staged": {
-    "src/**/*": ["eslint --fix","prettier --write --ignore-unknown"]
+    "src/**/*": [
+      "eslint --fix",
+      "prettier --write --ignore-unknown"
+    ]
   }
 }

@@ -83,10 +83,10 @@ Husky is helped with making _Prettier_ reformatting code before each commit. It 
 - Install husky by typing `yarn add husky lint-staged -D`.
 - Then run configuration commands
   ```shell
-  yarn add --dev husky lint-staged
-  npx husky install
-  npm set-script prepare "husky install"
-  npx husky add .husky/pre-commit "npx lint-staged"
+  > yarn add --dev husky lint-staged
+  > npx husky install
+  > npm set-script prepare "husky install"
+  > npx husky add .husky/pre-commit "npx lint-staged"
   ```
 - Add the following to your package.json:
   ```json
