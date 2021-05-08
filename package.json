@@ -1,0 +1,19 @@
+{
+  "name": "restaurant-manager-js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Lervana/restaurant-manager-js.git",
+  "author": "Katarzyna Dadek <k.dadek@lervana.dev>",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development NODE_CONFIG_DIR=config nodemon src/index.js",
+    "test": "cross-env NODE_ENV=test NODE_CONFIG_DIR=config jest --detectOpenHandles --maxWorkers=1 --watch"
+  },
+  "dependencies": {
+    "config": "^3.3.6",
+    "cross-env": "^7.0.3",
+    "jest": "^26.6.3"
+  }
+}
