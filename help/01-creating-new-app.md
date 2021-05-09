@@ -19,7 +19,11 @@ To create a new application, follow these steps:
 }
 ```
 
-4. Install packages: `yarn add cross-env config jest`
+4. Install packages: 
+   ```shell
+   > yarn add cross-env config`
+   > yarn add jest nodemon -D`
+   ````
 5. Add scripts to run your app by yarn/npm [package.json]:
 
 ```json
