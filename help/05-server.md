@@ -61,6 +61,7 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
    ```
 
 6. Add middlewares using constructor:
+
    ```js
    // src/Server.js
 
@@ -86,21 +87,23 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
    ```
 
 7. Create a certificate and key files (in this project HTTPS will be used):
-   
+
    - Create security dir: `mkdir _security`.
-   - Add _security folder to ignored by git.
+   - Add \_security folder to ignored by git.
+
    ```shell
    # .gitignore
-   
+
    node_modules
    .idea
    .env
    _security
    ```
+
    - Check OpenSSL version: `openssl version`.
    - If there is a need install `brew install openssl` or update OpenSSL `brew upgrade openssl`.
    - Generate private key and certificate (leave "challenge password" blank):
-   
+
    ```shell
    > openssl genrsa -out _security/key.pem
    > openssl req -new -key _security/key.pem -out _security/csr.pem
@@ -109,12 +112,13 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
    ```
 
 8. Create server start method:
+
    - Add packages _https_, _utils_, _fs_ - they don't need to be installed.
    - Add promisified readFile method: `const readFile = util.promisify(fs.readFile);`.
 
    ```js
    //src/Server.js
-   
+
    import cors from "cors";
    import express from "express";
    import helmet from "helmet";
@@ -122,46 +126,47 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
    import fs from "fs";
    import util from "util";
    import limit from "express-rate-limit";
-   
+
    const readFile = util.promisify(fs.readFile);
-   
+
    export default class Server {
-      instance = express();
-      
-      constructor(corsOptions, publicRoutesPrefix) {
-         this.instance.use(helmet());
-         this.instance.use(cors(corsOptions || {}));
-         this.instance.disable("x-powered-by");
-         if (publicRoutesPrefix)
-            this.instance.use(
-               publicRoutesPrefix,
-               limit({ windowMs: 15 * 60 * 1000, max: 250 })
-            );
-      }
-      
-      start = async (port, keyPath, certPath) => {
-         console.log(`Starting server on port ${port}...`);
-      
-         const [key, cert] = await Promise.all([
-            readFile(keyPath),
-            readFile(certPath),
-         ]);
-      
-         if (key && cert) {
-            https
-              .createServer({ key, cert }, this.instance)
-              .listen(port, () => console.log("HTTPS server UP"));
-         } else {
-            console.error("Cannot start server, key or cert not found.");
-         }
-      };
+     instance = express();
+
+     constructor(corsOptions, publicRoutesPrefix) {
+       this.instance.use(helmet());
+       this.instance.use(cors(corsOptions || {}));
+       this.instance.disable("x-powered-by");
+       if (publicRoutesPrefix)
+         this.instance.use(
+           publicRoutesPrefix,
+           limit({ windowMs: 15 * 60 * 1000, max: 250 })
+         );
+     }
+
+     start = async (port, keyPath, certPath) => {
+       console.log(`Starting server on port ${port}...`);
+
+       const [key, cert] = await Promise.all([
+         readFile(keyPath),
+         readFile(certPath),
+       ]);
+
+       if (key && cert) {
+         https
+           .createServer({ key, cert }, this.instance)
+           .listen(port, () => console.log("HTTPS server UP"));
+       } else {
+         console.error("Cannot start server, key or cert not found.");
+       }
+     };
    }
    ```
 
 9. Extend ".env" file by three options:
+
    ```js
     // .env
-    
+
    ### DATABASE ###
    DB_USERNAME=exampleuser
    DB_PASSWORD=examplepass
@@ -169,37 +174,38 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
    DB_NAME=exampledb
    DB_PORT=3307
    DB_DIALECT=mysql
-   
+
    ### OPTIONS ###
    PORT=3000
    HTTPS_KEY_PATH=_security/key.pem
    HTTPS_CERT_PATH=_security/cert.pem
    ```
 
-
 10. Add options in config:
+
    ```js
    // config/default.cjs
-
+   
    const { nodeEnv } = require("./utils");
    const { databaseConfig } = require("../database/dbConfig");
    
-   module.exports = { 
-      env: nodeEnv,
-      is_test: false,
-      name: "restaurant-manager-js",
-      database: databaseConfig,
-      options: {
-        port: process.env.PORT,
-        public_routes_prefix: '/api/public',
-     }
+   module.exports = {
+     env: nodeEnv,
+     is_test: false,
+     name: "restaurant-manager-js",
+     database: databaseConfig,
+     options: {
+       port: process.env.PORT,
+       public_routes_prefix: "/api/public",
+     },
    };
    ```
-   
+
 11. Make sure that commands in package.json looks like:
+
    ```json
-  // package.json
-  
+   // package.json
+   
    {
       ...
        "scripts": {
@@ -210,41 +216,48 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
         },
       ...
    }
-```
-   
+   ```
+
 12. Also make sure that in your config you require modules with .cjs extension.
+
    ```json
-  // config/default.cjs
-  
+   // config/default.cjs
+   
    {
         const { nodeEnv } = require("./utils.cjs");
         const { databaseConfig } = require("../database/dbConfig.cjs");
         ...
    }
-```
+   ```
 
 13. Import and start Server in index.js.
-   - Import config package: `import config from 'config';`
-   - Create server instance: `const server = new Server(config.cors_options, config.options.port);`.
-   - Start server: `server.start(config.options.port, config.security.key_path, config.security.cert_path);`
 
-```js
+- Import config package: `import config from 'config';`
+- Create server instance: `const server = new Server(config.cors_options, config.options.port);`.
+- Start server: `server.start(config.options.port, config.security.key_path, config.security.cert_path);`
+
+   ```js
    // src/index.js
-
-   import config from 'config';
+   
+   import config from "config";
    
    import Server from "./Server.js";
    
    const server = new Server(config.cors_options, config.options.port);
-   server.start(config.options.port, config.security.key_path, config.security.cert_path);
-```
+   server.start(
+     config.options.port,
+     config.security.key_path,
+     config.security.cert_path
+   );
+   ```
 
 14. Add babel-eslint: `yarn add babel-eslint -D`.
 
 15. Update .eslintrc.json:
-```json
-  // .eslintrc.json
 
+   ```json
+   // .eslintrc.json
+   
    {
      "env": {
        "browser": true,
@@ -258,4 +271,4 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
      },
      "rules": {}
    }
-```
+   ```
