@@ -1,5 +1,7 @@
 Tutorial:
 
+**All instructions are written and tested on macOS Big Sur**
+
 | Step | Content               | File                                                  |
 | ---- | --------------------- | ----------------------------------------------------- |
 | 00   | Prerequisites         | [00-prerequisites.md](help/00-prerequisites.md)       |

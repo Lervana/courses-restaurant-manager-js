@@ -66,8 +66,8 @@ module.exports = {
 
 ```js
 // config/default.cjs
-const { nodeEnv } = require("./utils");
-const { databaseConfig } = require("../database/dbConfig");
+const { nodeEnv } = require("./utils.cjs");
+const { databaseConfig } = require("../database/dbConfig.cjs");
 
 module.exports = {
   env: nodeEnv,

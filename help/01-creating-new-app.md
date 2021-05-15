@@ -19,11 +19,18 @@ To create a new application, follow these steps:
 }
 ```
 
-4. Install packages: 
-   ```shell
-   > yarn add cross-env config`
-   > yarn add jest nodemon -D`
-   ````
+4. Install packages:
+
+- cross-env [https://www.npmjs.com/package/cross-env]
+- config [https://www.npmjs.com/package/config]
+- jest [https://www.npmjs.com/package/jest]
+- nodemon [https://www.npmjs.com/package/nodemon]
+
+```shell
+  > yarn add cross-env config`
+  > yarn add jest nodemon -D`
+```
+
 5. Add scripts to run your app by yarn/npm [package.json]:
 
 ```json
@@ -37,8 +44,8 @@ To create a new application, follow these steps:
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development NODE_CONFIG_DIR=config nodemon src/index.js",
-    "test": "cross-env NODE_ENV=test NODE_CONFIG_DIR=config jest --detectOpenHandles --maxWorkers=1 --watch"
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
+    "test": "cross-env NODE_ENV=test jest --detectOpenHandles --maxWorkers=1 --watch",
   },
   "dependencies": {
     "config": "^3.3.6",
