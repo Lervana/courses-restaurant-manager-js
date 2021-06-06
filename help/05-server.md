@@ -164,7 +164,7 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
 
 9. Extend ".env" file by three options:
 
-   ```js
+   ```shell
     // .env
 
    ### DATABASE ###
@@ -182,7 +182,7 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
    ```
 
 10. Add options in config:
-
+   
    ```js
    // config/default.cjs
    
@@ -201,33 +201,29 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
    };
    ```
 
-11. Make sure that commands in package.json looks like:
-
-   ```json
-   // package.json
+11. Make sure that scripts in package.json looks like:
    
+   ```json
    {
-      ...
-       "scripts": {
-          "dev": "cross-env NODE_ENV=development nodemon src/index.js",
-          "test": "cross-env NODE_ENV=test jest --detectOpenHandles --maxWorkers=1 --watch",
-          "prepare": "husky install",
-          "lint": "eslint src"
-        },
-      ...
+     "scripts": {
+       "dev": "cross-env NODE_ENV=development nodemon src/index.js",
+       "test": "cross-env NODE_ENV=test jest --detectOpenHandles --maxWorkers=1 --watch",
+       "prepare": "husky install",
+       "lint": "eslint src"
+     }
    }
    ```
 
 12. Also make sure that in your config you require modules with .cjs extension.
 
-   ```json
-   // config/default.cjs
+   ```js
+     // config/default.cjs
    
-   {
-        const { nodeEnv } = require("./utils.cjs");
-        const { databaseConfig } = require("../database/dbConfig.cjs");
-        ...
-   }
+      {
+           const { nodeEnv } = require("./utils.cjs");
+           const { databaseConfig } = require("../database/dbConfig.cjs");
+           // ...
+      }
    ```
 
 13. Import and start Server in index.js.
@@ -236,39 +232,36 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
 - Create server instance: `const server = new Server(config.cors_options, config.options.port);`.
 - Start server: `server.start(config.options.port, config.security.key_path, config.security.cert_path);`
 
-   ```js
-   // src/index.js
-   
-   import config from "config";
-   
-   import Server from "./Server.js";
-   
-   const server = new Server(config.cors_options, config.options.port);
-   server.start(
-     config.options.port,
-     config.security.key_path,
-     config.security.cert_path
-   );
-   ```
+  ```js
+  // src/index.js
+
+  import config from "config";
+
+  import Server from "./Server.js";
+
+  const server = new Server(config.cors_options, config.options.port);
+  server.start(
+    config.options.port,
+    config.security.key_path,
+    config.security.cert_path
+  );
+  ```
 
 14. Add babel-eslint: `yarn add babel-eslint -D`.
 
 15. Update .eslintrc.json:
-
-   ```json
-   // .eslintrc.json
-   
-   {
-     "env": {
-       "browser": true,
-       "es2021": true
-     },
-     "parser": "babel-eslint",
-     "extends": ["eslint:recommended", "prettier"],
-     "parserOptions": {
-       "ecmaVersion": 12,
-       "sourceType": "module"
-     },
-     "rules": {}
-   }
-   ```
+      ```json
+      {
+         "env": {
+            "browser": true,
+            "es2021": true
+         },
+         "parser": "babel-eslint",
+         "extends": ["eslint:recommended", "prettier"],
+         "parserOptions": {
+            "ecmaVersion": 12,
+            "sourceType": "module"
+         },
+         "rules": {}
+      }
+      ```

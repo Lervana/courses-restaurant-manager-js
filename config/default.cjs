@@ -9,6 +9,7 @@ module.exports = {
   options: {
     port: process.env.PORT,
     public_routes_prefix: "/api/public",
+    private_routes_prefix: "/api/private",
   },
   security: {
     key_path: process.env.HTTPS_KEY_PATH,

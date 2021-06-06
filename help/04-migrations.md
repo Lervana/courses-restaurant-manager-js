@@ -125,3 +125,27 @@ module.exports = {
 11. Run test migration: `npx sequelize db:migrate`.
 
 11. Undo test migration: `npx sequelize db:migrate:undo`.
+
+## Migrations shortcut
+
+1. Install Sequelize: `yarn add sequelize` [https://www.npmjs.com/package/sequelize].
+2. Install Sequelize CLI: `yarn add sequelize-cli -D` [https://www.npmjs.com/package/sequelize-cli].
+3. Install mysql2: `yarn add mysql2` [https://www.npmjs.com/package/mysql2].
+4. Create _config_ directory: `mkdir config`.
+5. Create _default_ config file: `touch config/default.cjs`. ".cjs" is needed because config is not supporting ESM modules.
+6. Create _utils_ file: `touch config/utils.cjs`.
+7. Create _database_ config file: `touch database/dbConfig.cjs`.
+8. Create _.env_ file: `touch .env`. Remember that this file shouldn't be committed!
+9. Put values into .env file.
+10. Install _dotenv_ package: `yarn add dotenv` [https://www.npmjs.com/package/dotenv].
+11. Install _lodash_ package: `yarn add lodash` [https://www.npmjs.com/package/lodash].
+12. Handle reading variables inside config/utils.cjs file.
+13. Create **_database_** config.
+14. Create **default** config for all environments
+15. Create **.sequelizerc** containing Sequelize setup: `touch .sequelizerc`.
+16. Make initialization using sequelize command _init:migrations_ and _init:seeders_.
+17. Create test migration: `sequelize migration:generate --name test`.
+18. Rename file `database/migrations/xyz-test.js` to `database/migrations/xyz-test.cjs`
+19. Implement test migration in _database/migrations/xyz-test.cjs_ file.
+20. Run test migration: `npx sequelize db:migrate`.
+21. Undo test migration: `npx sequelize db:migrate:undo` if needed.

@@ -31,3 +31,4 @@ _**All instructions are written and tested on macOS Big Sur.**_
 | 03   | Adding docker compose | [03-docker-compose.md](help/03-docker-compose.md)     |
 | 04   | Migrations setup      | [04-migrations.md](help/04-migrations.md)             |
 | 05   | Server setup          | [05-server.md](help/05-server.md)                     |
+| 06   | Routes setup          | [06-routes.md](help/06-routes.md)                     |
