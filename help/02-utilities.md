@@ -27,7 +27,7 @@ ESlint is a very useful tool - it requires that certain rules are met in the cod
   ```json
   {
     "env": {
-      "browser": true,
+      "node": true,
       "es2021": true
     },
     "extends": "eslint:recommended",
@@ -64,7 +64,7 @@ Prettier need to be connected with ESlint. In that case you need to add eslint-c
   ```json
   {
     "env": {
-      "browser": true,
+      "node": true,
       "es2021": true
     },
     "extends": ["eslint:recommended", "prettier"],

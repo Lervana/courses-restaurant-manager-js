@@ -221,7 +221,7 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
    
    {
      const { nodeEnv } = require("./utils.cjs");
-     const { databaseConfig } = require("../database/dbConfig.cjs");
+     const databaseConfig = require("../database/dbConfig.cjs");
      // ...
    }
    ```
@@ -253,7 +253,7 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
     ```json
     {
       "env": {
-        "browser": true,
+        "node": true,
         "es2021": true
       },
       "parser": "babel-eslint",

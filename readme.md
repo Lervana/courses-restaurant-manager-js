@@ -35,3 +35,4 @@ _**All instructions are written and tested on macOS Big Sur.**_
 | 05   | Server setup          | [05-server.md](help/05-server.md)                     |
 | 06   | Routes setup          | [06-routes.md](help/06-routes.md)                     |
 | 07   | Tests setup           | [07-tests.md](help/07-tests.md)                       |
+| 08   | REST to CRUD          | [08-rest-to-crud.md](help/08-rest-to-crud.md)         |

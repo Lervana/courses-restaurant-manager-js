@@ -5,6 +5,7 @@ import https from "https";
 import fs from "fs";
 import util from "util";
 import limit from "express-rate-limit";
+import bodyParser from "body-parser";
 
 const readFile = util.promisify(fs.readFile);
 
@@ -16,6 +17,7 @@ export default class Server {
   constructor(corsOptions, publicRoutesPrefix, privateRoutesPrefix) {
     this.instance.use(helmet());
     this.instance.use(cors(corsOptions || {}));
+    this.instance.use(bodyParser.json());
     this.instance.disable("x-powered-by");
 
     if (publicRoutesPrefix)

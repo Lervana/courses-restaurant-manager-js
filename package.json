@@ -8,13 +8,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
+    "dev": "cross-env NODE_ENV=development NODE_OPTIONS=--experimental-vm-modules nodemon src/index.js",
     "test-api": "cross-env NODE_ENV=test nodemon src/index.js",
     "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --detectOpenHandles --maxWorkers=1 --watch",
     "prepare": "husky install",
     "lint": "eslint src"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "config": "^3.3.6",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
