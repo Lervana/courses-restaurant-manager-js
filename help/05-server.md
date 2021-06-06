@@ -182,7 +182,7 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
    ```
 
 10. Add options in config:
-   
+
    ```js
    // config/default.cjs
    
@@ -202,7 +202,7 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
    ```
 
 11. Make sure that scripts in package.json looks like:
-   
+
    ```json
    {
      "scripts": {
@@ -217,13 +217,13 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
 12. Also make sure that in your config you require modules with .cjs extension.
 
    ```js
-     // config/default.cjs
+   // config/default.cjs
    
-      {
-           const { nodeEnv } = require("./utils.cjs");
-           const { databaseConfig } = require("../database/dbConfig.cjs");
-           // ...
-      }
+   {
+     const { nodeEnv } = require("./utils.cjs");
+     const { databaseConfig } = require("../database/dbConfig.cjs");
+     // ...
+   }
    ```
 
 13. Import and start Server in index.js.
@@ -250,18 +250,35 @@ Server will be build on Express.js [https://www.npmjs.com/package/express]
 14. Add babel-eslint: `yarn add babel-eslint -D`.
 
 15. Update .eslintrc.json:
-      ```json
-      {
-         "env": {
-            "browser": true,
-            "es2021": true
-         },
-         "parser": "babel-eslint",
-         "extends": ["eslint:recommended", "prettier"],
-         "parserOptions": {
-            "ecmaVersion": 12,
-            "sourceType": "module"
-         },
-         "rules": {}
-      }
-      ```
+    ```json
+    {
+      "env": {
+        "browser": true,
+        "es2021": true
+      },
+      "parser": "babel-eslint",
+      "extends": ["eslint:recommended", "prettier"],
+      "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+      },
+      "rules": {}
+    }
+    ```
+
+## Server shortcut
+
+1. Create a file for implementing express server: `touch src/Server.js`.
+2. Create server class and add instance field - this will be an express representation.
+3. Install some useful middlewares: `yarn add helmet express-rate-limit cors`.
+4. Create development config file: `touch config/development.cjs` and put there development configuration.
+5. Add express package: `yarn add express` and initialize express instance `instance = express()`.
+6. Add cors, helmet and limiter middlewares.
+7. Create a certificate and key files (in this project HTTPS will be used).
+8. Create server start method.
+9. Extend ".env" file by three options: PORT, HTTPS_KEY_PATH and HTTPS_CERT_PATH.
+10. Add extended env options in config.
+11. Make sure that in your config you require modules with .cjs extension.
+12. Import and start Server in index.js.
+13. Add babel-eslint: `yarn add babel-eslint -D`.
+14. Update .eslintrc.json.

@@ -140,3 +140,14 @@
    ```
 
 7. Test route `https://localhost:3000/api/public/status` in postman.
+
+## Routes shortcut
+
+1. Add routes directory: `mkdir src/routes`.
+2. Add private routes prefix and store prefixes in class fields (Server.js): _publicRoutesPrefix_ and _privateRoutesPrefix_.
+3. Add method in Server.js that allows adding routes: _addRoutes = (routes) => {}_.
+4. Create file: `touch src/routes/status.js` and implement there status route _export const getStatus = (req, res) => {};_.
+5. Add file: `touch src/routes/index.js` and define there routes _export default [{ ... }];_.
+5. Update config to define prefixes.
+6. Register routes in server: _server.addRoutes(routes);_.
+7. Test route `https://localhost:3000/api/public/status` in postman.

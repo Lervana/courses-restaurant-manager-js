@@ -9,7 +9,8 @@
   "type": "module",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon src/index.js",
-    "test": "cross-env NODE_ENV=test jest --detectOpenHandles --maxWorkers=1 --watch",
+    "test-api": "cross-env NODE_ENV=test nodemon src/index.js",
+    "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --detectOpenHandles --maxWorkers=1 --watch",
     "prepare": "husky install",
     "lint": "eslint src"
   },
@@ -26,11 +27,12 @@
     "sequelize": "^6.6.2"
   },
   "devDependencies": {
+    "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^6.0.0",
-    "jest": "^26.6.3",
+    "jest": "^27.0.4",
     "lint-staged": "^11.0.0",
     "nodemon": "^2.0.7",
     "prettier": "^2.2.1",
@@ -41,5 +43,8 @@
       "eslint --fix",
       "prettier --write --ignore-unknown"
     ]
+  },
+  "jest": {
+    "transform": {}
   }
 }

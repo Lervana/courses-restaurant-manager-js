@@ -1,18 +1,20 @@
 # Restaurant manager demo
+
 Application for managing orders in a restaurant
-Application written in JavaScript (Node.js). Its task is to provide several functionalities 
+Application written in JavaScript (Node.js). Its task is to provide several functionalities
 necessary in running a restaurant.
 
 ### Requirements:
-- The program should enable the creation and editing of the menu (minimum 12 items, below that amount the application 
+
+- The program should enable the creation and editing of the menu (minimum 12 items, below that amount the application
   returns an error with incomplete configuration information);
 - The menu should contain categories;
 - Each product in the menu should have an assigned name and price;
-- The application should allow for placing orders and assigning them a table number (or the "take away" option - this 
+- The application should allow for placing orders and assigning them a table number (or the "take away" option - this
   option is for statistical purposes only);
 - It should be possible to convert prices to another currency in real time (connection to the currency API);
 - Ability to change the order status;
-- Invoicing bills (also split bills) - in addition to prices, they are to provide information about the time 
+- Invoicing bills (also split bills) - in addition to prices, they are to provide information about the time
   in which the order was completed;
 - Reports;
 
@@ -32,3 +34,4 @@ _**All instructions are written and tested on macOS Big Sur.**_
 | 04   | Migrations setup      | [04-migrations.md](help/04-migrations.md)             |
 | 05   | Server setup          | [05-server.md](help/05-server.md)                     |
 | 06   | Routes setup          | [06-routes.md](help/06-routes.md)                     |
+| 07   | Tests setup           | [07-tests.md](help/07-tests.md)                       |
